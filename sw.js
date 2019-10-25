@@ -49,9 +49,7 @@ self.addEventListener('activate', e => {
 //getting the online content for offline viewing.
 self.addEventListener('fetch', e => {
     e.respondWith(
-        caches.match(e.request, {
-            ignoreSearch
-        }).then(response => {
+        caches.match(e.request).then(response => {
             return response || fetch(e.request);
         })
     );
